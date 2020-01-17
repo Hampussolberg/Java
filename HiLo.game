@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class HiLo {
+   public static void main(String args[]) {
+     Scanner scanner = new Scanner(System.in);
+     System.out.println("Valkommen till HiLo!");
+     System.out.println("Vilken svårighetsgrad?");
+     
+      System.out.println("0. Latt (1-10)");
+      System.out.println("1. Mellan (1-100)");
+      System.out.println("2. Svart (1-1000)");
+     
+      int[] maxNumber = new int[3];
+     
+         int difficulty = scanner.nextInt();
+     
+         maxNumber[0] = 10;
+         maxNumber[1] = 100;
+         maxNumber[2] = 1000;      
+         System.out.println("Du lyckades pa " + playGame(maxNumber[difficulty]) + " forsok");
+   }
+           
+   public static int playGame(int maxNumber) {
+      Scanner scanner = new Scanner(System.in);
+     
+      int result = 0;
+      int guess;
+      int answer = (int)(Math.random() * maxNumber) +1;
+       
+      do { System.out.println("Gissa pa ett tal mellan 1 och " +maxNumber);
+     
+         guess = scanner.nextInt();
+     
+         giveResponse(answer, guess);
+     
+         result = result + 1;
+     
+      } while (guess != answer);
+
+       return result;
+      }
+       
+   public static void giveResponse(int answer, int guess) {
+      int maxNumber;  
+      if(answer < guess) {
+         System.out.println("for hogt!");
+   }  else if(answer > guess) {
+         System.out.println("for lagt!");
+   }  else if(answer == guess) {
+         System.out.println("Helt ratt!");
+   }
+ 
+   }
+}
